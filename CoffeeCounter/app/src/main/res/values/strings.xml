@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CoffeeCounter</string>
+    <string name="drink_button_text">Drink!</string>
+</resources>
