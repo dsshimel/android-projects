@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CoffeeCounter</string>
     <string name="drink_button_text">Drink!</string>
+    <plurals name="coffee_count">
+        <item quantity="one">You drank %d coffee today.</item>
+        <item quantity="other">You drank %d coffees today.</item>
+    </plurals>
 </resources>
