@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Counter {
+class Counter {
     private final List<DateTime> mCoffeeTimes = new ArrayList<>();
 
     DateTime record() {
