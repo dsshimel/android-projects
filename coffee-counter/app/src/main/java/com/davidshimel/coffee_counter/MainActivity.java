@@ -3,7 +3,11 @@ package com.davidshimel.coffee_counter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import org.joda.time.DateTime;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,5 +27,10 @@ public class MainActivity extends AppCompatActivity {
                 mCounter.record();
             }
         });
+
+        ListView coffeeList = (ListView) findViewById(R.id.coffee_times_list);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, mCounter.getFormattedTimes());
+        coffeeList.setAdapter(arrayAdapter);
     }
 }
