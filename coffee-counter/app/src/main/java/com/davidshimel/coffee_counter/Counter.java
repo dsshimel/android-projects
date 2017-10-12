@@ -24,6 +24,6 @@ class Counter {
     }
 
     static String formatTime(DateTime time) {
-        return time.toLocalTime().toString(DateTimeFormat.shortTime());
+        return time.toString(DateTimeFormat.shortTime());
     }
 }
