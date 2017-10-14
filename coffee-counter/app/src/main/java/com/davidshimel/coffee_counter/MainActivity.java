@@ -12,7 +12,7 @@ import org.joda.time.DateTime;
 public class MainActivity extends AppCompatActivity {
 
     private Counter mCounter;
-    private ArrayAdapter<String> mRecordListAdapter;
+    private ArrayAdapter<Record> mRecordListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         mCounter = new Counter();
         mRecordListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                mCounter.getFormattedTimes());
+                mCounter.getTimes());
         ListView coffeeList = (ListView) findViewById(R.id.coffee_times_list);
         coffeeList.setAdapter(mRecordListAdapter);
 
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         drinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DateTime time = mCounter.record();
-                mRecordListAdapter.add(Counter.formatTime(time));
+                Record time = mCounter.record();
+                mRecordListAdapter.add(time);
             }
         });
     }
