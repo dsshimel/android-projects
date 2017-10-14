@@ -7,8 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import org.joda.time.DateTime;
-
 public class MainActivity extends AppCompatActivity {
 
     private Counter mCounter;
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         drinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Record time = mCounter.record();
+                Record time = mCounter.count();
                 mRecordListAdapter.add(time);
             }
         });

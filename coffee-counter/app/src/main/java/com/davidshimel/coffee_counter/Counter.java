@@ -8,7 +8,7 @@ import java.util.List;
 class Counter {
     private final List<Record> mCoffeeTimes = new ArrayList<>();
 
-    Record record() {
+    Record count() {
         Record coffeeTime = new Record(DateTime.now());
         mCoffeeTimes.add(coffeeTime);
         return coffeeTime;
