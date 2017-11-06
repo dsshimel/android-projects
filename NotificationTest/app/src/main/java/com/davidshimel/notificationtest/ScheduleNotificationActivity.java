@@ -4,30 +4,36 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 public class ScheduleNotificationActivity extends AppCompatActivity {
+    private static final long INTERVAL_MINUTES = 30;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent cancelIntent = new Intent(this, CancelNotificationActivity.class);
-        startActivity(cancelIntent);
-
         PendingIntent sendNotificationIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, SendNotificationActivity.class),
-                PendingIntent.FLAG_CANCEL_CURRENT);
-
+                PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        // Use wakeup in case the device is off when the alarm goes off. This is more intrusive
-        // of course (and uses more system resources).
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, getMinutesInMillis(30),
+
+        alarmManager.cancel(sendNotificationIntent);
+
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME, getMinutesInMillis(INTERVAL_MINUTES),
                 sendNotificationIntent);
+
+        Toast.makeText(this,
+                "In " + INTERVAL_MINUTES
+                        + " minutes you will be reminded to check if you are dreaming.",
+                Toast.LENGTH_LONG).show();
 
         finish();
     }
 
     private static long getMinutesInMillis(long minutes) {
-        return minutes * 60 * 1000;
+        return SystemClock.elapsedRealtime() + (minutes * 60 * 1000);
     }
 }

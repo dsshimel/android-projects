@@ -8,10 +8,9 @@ public class CancelNotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        notificationManager.cancel(Constants.NOTIFICATION_TAG, Constants.NOTIFICATION_ID);
+        ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).cancel(
+                Constants.NOTIFICATION_TAG, Constants.NOTIFICATION_ID);
 
         finish();
     }
