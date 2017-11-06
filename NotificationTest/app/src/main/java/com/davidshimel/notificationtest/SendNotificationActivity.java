@@ -17,7 +17,9 @@ public class SendNotificationActivity extends AppCompatActivity {
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(android.R.drawable.sym_def_app_icon)
                         .setContentTitle("Are you dreaming?")
-                        .setContentText("Well are you?")
+                        .setContentText(
+                                "Tap to be reminded again in 30 minutes or swipe to halt dream "
+                                        + "notifications.")
                         .setAutoCancel(true)
                         .setContentIntent(getNotificationIntent());
 
